@@ -7,11 +7,12 @@
 # Software  :PyCharm Community Edition
 from suds.client import Client
 from common.mysql import MysqlUtil
+from common.config import ReadConfig
 
 
 class MCode:
     def __init__(self):
-        self.url = "http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl"
+        self.url = ReadConfig().get_value("env-api","pre_url")+"sms-service-war-1.0/ws/smsFacade.ws?wsdl"
         self.client = Client(url=self.url)
 
     def sendMCode(self, params):
