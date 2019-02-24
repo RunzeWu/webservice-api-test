@@ -6,7 +6,7 @@
 # File      :test_sendMCode.py
 # Software  :PyCharm Community Edition
 import unittest
-from faker import Faker
+import suds
 from libext.ddt import ddt,data
 from common import mylog
 from common.mcode import MCode
@@ -50,21 +50,30 @@ class TestSendMcode(unittest.TestCase):
         param = eval(context.replace(param))
         try:
             res = MCode().sendMCode(param)
-        except:
-            pass
-
-
-        try:
-            logger.info(type(expect),type(res.retCode))
-            self.assertEqual(expect, eval(res.retCode))
-            # self.assertRaises()
-            self.excel.write_data(id + 1, 7, res.retCode)
+            retCode = res.retCode
+        except suds.WebFault as e:
+            fault = e.fault
+            faultstring = str(fault["faultstring"])
+            # print(faultstring)
+            self.assertEqual(faultstring, expect,"系统报错信息不一致")
+            self.excel.write_data(id + 1, 7, faultstring)
             self.excel.write_data(id + 1, 8, "PASS")
-        except AssertionError as e:
-            logger.error("*****断言失败*****")
-            self.excel.write_data(id + 1, 7, res.retCode)
-            self.excel.write_data(id + 1, 8, "Failed")
-            raise e
+            res=None
+
+        if res is not None:
+            try:
+                logger.info(type(expect),type(retCode))
+                self.assertEqual(expect, eval(retCode))
+                # self.assertRaises()
+                self.excel.write_data(id + 1, 7, retCode)
+                self.excel.write_data(id + 1, 8, "PASS")
+            except AssertionError as e:
+                logger.error("*****断言失败*****")
+                self.excel.write_data(id + 1, 7, retCode)
+                self.excel.write_data(id + 1, 8, "Failed")
+                raise e
+        else:
+            pass
 
 if __name__ == '__main__':
     unittest.main()
