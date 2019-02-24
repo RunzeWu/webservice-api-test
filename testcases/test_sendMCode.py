@@ -22,6 +22,7 @@ logger = mylog.get_logger(logger_name="test_sendMCode")
 class TestSendMcode(unittest.TestCase):
     excel = DoExcel(contants.case_file, "sendMCode")
     testcases = excel.read_data()
+    logger.info("读取sendMCode所有测试用例成功")
 
     @classmethod
     def setUpClass(cls):
@@ -43,15 +44,17 @@ class TestSendMcode(unittest.TestCase):
     @data(*testcases)
     def test_sendMCode(self, testcase):
         id = testcase["id"]
-        title = testcase["title"]
+        # title = testcase["title"]
         param = testcase["data"]
         expect = testcase["expect"]
 
         param = eval(context.replace(param))
         try:
             res = MCode().sendMCode(param)
+            logger.info("请求发送成功")
             retCode = res.retCode
         except suds.WebFault as e:
+            logger.error("系统错误")
             fault = e.fault
             faultstring = str(fault["faultstring"])
             # print(faultstring)
