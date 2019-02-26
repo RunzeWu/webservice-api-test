@@ -1,5 +1,6 @@
 # -*- coding:utf-8 _*-
 import re
+import random
 from faker import Faker
 from common.config import ReadConfig
 
@@ -14,7 +15,9 @@ class Context:  # 上下文，数据的准备和记录
     # normal_user = config.get_value('data', 'normal_user')
     # normal_pwd = config.get_value('data', 'normal_pwd')
     # normal_member_id = config.get_value('data', 'normal_member_id')
-    sendMCode_mobile = fake.phone_number()
+    mobile = fake.phone_number()
+    verify_code = ""
+    user_id = fake.name() + str(random.randint(0, 10)) + " By夜雨声烦"
 
 # s 是目标字符串
 # d 是替换的内容
@@ -26,7 +29,7 @@ def replace(s):
         m = re.search(p, s)
         # print(m)
         key = m.group(1)
-        # print(key)
+        print(key)
         mobile = fake.phone_number()
         value = mobile
         # print(value)
@@ -39,9 +42,14 @@ def replace_new(s):
     while re.search(p, s):
         m = re.search(p, s)
         key = m.group(1)
+        # print(key)
         if hasattr(Context, key):
             value = getattr(Context, key)  # 利用反射动态的获取属性
             s = re.sub(p, value, s, count=1)
+            if key == "mobile":
+                setattr(Context, key, fake.phone_number())
+            if key == "user_id":
+                setattr(Context, key, fake.name() + str(random.randint(0, 10)) + " By夜雨声烦")
         else:
             return None  # 或者抛出一个异常，告知没有这个属性
     return s
@@ -50,12 +58,12 @@ def replace_new(s):
 if __name__ == '__main__':
 
     # s = '{"mobilephone":"${admin_user}","pwd":"${admin_pwd}"}'
-    s1 ='{"mobile": "${mobile}", "tmpl_id": 1, "client_ip": "47.107.168.87"}'
+    s1 = '{"ip":"129.45.6.7","mobile":"${mobile}","pwd":"123456","channel_id":"2","user_id":"${user_id}","verify_code":"${verify_code}"}'
 
     # data = {"admin_user": "15873171553", "admin_pwd": "123456"}
     #
     # s = replace(s, data)
     # print(s)
-
-    s = replace(s1)
-    print(s)
+    for i in range(8):
+        s = replace_new(s1)
+        print(s)

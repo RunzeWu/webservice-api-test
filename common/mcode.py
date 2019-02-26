@@ -12,7 +12,7 @@ from common.config import ReadConfig
 
 class MCode:
     def __init__(self):
-        self.url = ReadConfig().get_value("env-api","pre_url")+"sms-service-war-1.0/ws/smsFacade.ws?wsdl"
+        self.url = ReadConfig().get_value("env-api", "pre_url")+"sms-service-war-1.0/ws/smsFacade.ws?wsdl"
         self.client = Client(url=self.url)
 
     def sendMCode(self, params):
@@ -43,6 +43,6 @@ class MCode:
 
 if __name__ == '__main__':
     a = MCode()
-    res = a.sendMCode("17751810779")
+    res = a.sendMCode("17751810770")
     # res = a.getMcode("17751810779")
     print(res)

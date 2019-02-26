@@ -56,6 +56,7 @@ class TestSendMcode(unittest.TestCase):
         except suds.WebFault as e:
             logger.error("系统错误")
             fault = e.fault
+            print(e.fault)
             faultstring = str(fault["faultstring"])
             # print(faultstring)
             self.assertEqual(faultstring, expect,"系统报错信息不一致")
@@ -77,6 +78,7 @@ class TestSendMcode(unittest.TestCase):
                 raise e
         else:
             pass
+
 
 if __name__ == '__main__':
     unittest.main()
