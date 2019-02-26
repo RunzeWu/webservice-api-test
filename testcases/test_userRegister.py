@@ -8,7 +8,6 @@
 import unittest
 import re
 import time
-import faker
 from suds.client import Client
 from libext.ddt import ddt, data
 from common import mylog
@@ -51,10 +50,9 @@ class TestUserRegister(unittest.TestCase):
     @data(*testcases)
     def test_userRegister(self, value):
         # print(value["data"], type(value["data"]))
-
+        id = value["id"]
         param = eval(context.replace_new(value["data"]))
         mobile = param["mobile"]
-
 
         # 先发验证码
         if re.match(r"^1[356789]\d{9}$", mobile):
@@ -62,10 +60,7 @@ class TestUserRegister(unittest.TestCase):
             print(mobile)
             MCode().sendMCode(self.MCodeParam)
             m_code = str(MCode().getMcode(mobile))
-            if value["title"] == "验证码不正确":
-                m_code = m_code.join("4")
-            elif value["title"] == "验证码为空":
-                m_code = ""
+
             print(mobile)
             print(m_code)
         else:
@@ -80,6 +75,40 @@ class TestUserRegister(unittest.TestCase):
 
         res = client.service.userRegister(param)
         print(res)
+
+        try:
+            sql = "select * FROM user_db.t_user_info WHERE Fuser_id = '" + param["user_id"]+"'"
+            print(sql)
+            result = self.mysql.fetchone(sql)
+        except:
+            result = None
+
+        try:
+            self.assertEqual(int(res.retCode), value["expect"])
+            if str(res.retCode) == "0":
+                try:
+                    self.assertIsNot(result,None,"数据库中数据不存在数据！！")
+                    self.excel.write_data(id + 1, 7, str(res.retCode))
+                    self.excel.write_data(id + 1, 8, "PASS")
+                except AssertionError as e:
+                    self.excel.write_data(id + 1, 7, res.retCode)
+                    self.excel.write_data(id + 1, 8, "Failed")
+                    raise e
+            else:
+                try:
+                    self.assertIs(result,None,"数据库中数据不存在数据！！")
+                    self.excel.write_data(id + 1, 7, str(res.retCode))
+                    self.excel.write_data(id + 1, 8, "PASS")
+                except AssertionError as e:
+                    self.excel.write_data(id + 1, 7, res.retCode)
+                    self.excel.write_data(id + 1, 8, "Failed")
+                    raise e
+
+        except AssertionError as e:
+            self.excel.write_data(id + 1, 7, res.retCode)
+            self.excel.write_data(id + 1, 8, "Failed")
+            raise e
+
 
 
 

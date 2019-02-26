@@ -27,7 +27,7 @@ def getMcode(mobile):
 
 
 fake = Faker("zh_CN")
-mobile = fake.phone_number()
+mobile = "17751810779"
 print(mobile)
 
 sendMCode_url = "http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl"
@@ -45,3 +45,4 @@ t = {"channel_id": "1", "ip": "129.45.6.7", "mobile": mobile, "pwd": "453173", "
      "verify_code": code}
 result = client02.service.userRegister(t)
 print(result)
+

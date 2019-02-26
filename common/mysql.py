@@ -47,7 +47,8 @@ class MysqlUtil:
 
 if __name__ == '__main__':
     A = MysqlUtil()
-    sql = "select Fverify_code from sms_db_79.t_mvcode_info_7 where Fmobile_no='17751810779' GROUP BY Fsend_time DESC;"
-    res = A.fetchone(sql)
-    print(type(res))
-    print(res)
+    sql = "select * FROM user_db.t_user_info WHERE Fuser_id = '1465145'"
+    try:
+        res = A.fetchone(sql)
+    except Exception as e:
+        res = None
