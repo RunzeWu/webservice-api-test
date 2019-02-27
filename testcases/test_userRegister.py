@@ -55,56 +55,62 @@ class TestUserRegister(unittest.TestCase):
         mobile = param["mobile"]
 
         # 先发验证码
-        if re.match(r"^1[356789]\d{9}$", mobile):
+        if re.match(r"^1[356789]\d{9}$", mobile) and value["title"] != "验证码不正确" and value["title"] != "验证码为空":
             self.MCodeParam["mobile"] = mobile
             print(mobile)
             MCode().sendMCode(self.MCodeParam)
             m_code = str(MCode().getMcode(mobile))
-
-            print(mobile)
-            print(m_code)
-        else:
-            m_code = ""
-
-        param["verify_code"] = m_code
+            param["verify_code"] = m_code
+        elif value["title"] == "验证码不正确":
+            self.MCodeParam["mobile"] = mobile
+            MCode().sendMCode(self.MCodeParam)
 
         if value["title"] == "验证码超时":
-            time.sleep(30)
+            time.sleep(61)
+
+        if value["title"] != "验证码不正确":
+            print(param["verify_code"])
 
         client = Client(ReadConfig().get_value("env-api", "pre_url")+value["url"])
 
         res = client.service.userRegister(param)
-        print(res)
+        logger.info(res)
 
         try:
             sql = "select * FROM user_db.t_user_info WHERE Fuser_id = '" + param["user_id"]+"'"
-            print(sql)
+            logger.info(sql)
             result = self.mysql.fetchone(sql)
         except:
             result = None
 
         try:
             self.assertEqual(int(res.retCode), value["expect"])
+            logger.info("状态码校验成功")
             if str(res.retCode) == "0":
                 try:
-                    self.assertIsNot(result,None,"数据库中数据不存在数据！！")
+                    self.assertIsNot(result, None, "数据库中数据不存在数据！！")
+                    logger.info("数据校验成功")
                     self.excel.write_data(id + 1, 7, str(res.retCode))
                     self.excel.write_data(id + 1, 8, "PASS")
                 except AssertionError as e:
+                    logger.error("数据校验失败")
                     self.excel.write_data(id + 1, 7, res.retCode)
                     self.excel.write_data(id + 1, 8, "Failed")
                     raise e
             else:
                 try:
                     self.assertIs(result,None,"数据库中数据不存在数据！！")
+                    logger.info("数据校验成功")
                     self.excel.write_data(id + 1, 7, str(res.retCode))
                     self.excel.write_data(id + 1, 8, "PASS")
                 except AssertionError as e:
+                    logger.error("数据校验失败")
                     self.excel.write_data(id + 1, 7, res.retCode)
                     self.excel.write_data(id + 1, 8, "Failed")
                     raise e
 
         except AssertionError as e:
+            logger.info("状态码校验失败")
             self.excel.write_data(id + 1, 7, res.retCode)
             self.excel.write_data(id + 1, 8, "Failed")
             raise e

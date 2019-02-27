@@ -129,7 +129,7 @@ def mk_test_name(name, value, index=0):
     # 如果数据是字典，则获取字典当中的api_name对应的值，加到测试用例名称中。
     if type(value) is dict:
         try:
-            value = value["title"]  # case_name作为value值
+            value = value["title"]  # title作为value值
         except:
             return "{0}_{1}".format(name, index)
 

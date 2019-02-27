@@ -66,7 +66,7 @@ class TestSendMcode(unittest.TestCase):
 
         if res is not None:
             try:
-                logger.info(type(expect),type(retCode))
+                # logger.info(type(expect),type(retCode))
                 self.assertEqual(expect, eval(retCode))
                 # self.assertRaises()
                 self.excel.write_data(id + 1, 7, retCode)
