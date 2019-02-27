@@ -25,9 +25,15 @@ def getMcode(mobile):
         res = None
     return res
 
+def getuid(user_id):
+    sql = "select Fuid FROM user_db.t_user_info where Fuser_id = '" + user_id +"'"
+    A = MysqlUtil()
+    res = str(A.fetchone(sql))
+    A.close_database()
+    return res
 
 fake = Faker("zh_CN")
-mobile = "17751810779"
+mobile = fake.phone_number()
 print(mobile)
 
 sendMCode_url = "http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl"
@@ -38,11 +44,26 @@ client01.service.sendMCode(t)
 code = getMcode(mobile)
 print(mobile, code)
 
+user_id = fake.name()
 
 userRegister_url = "http://120.24.235.105:9010/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl"
 client02 = Client(userRegister_url)
-t = {"channel_id": "1", "ip": "129.45.6.7", "mobile": mobile, "pwd": "453173", "user_id": "abc1231",
+print(client02)
+t = {"channel_id": "1", "ip": "129.45.6.7", "mobile": mobile, "pwd": "453173", "user_id": user_id,
      "verify_code": code}
 result = client02.service.userRegister(t)
 print(result)
+
+true_name = user_id
+cre_id = fake.ssn()
+uid = getuid(user_id)
+
+print(true_name, cre_id, uid)
+client03 = Client(userRegister_url)
+
+t1 = {"uid": uid, "true_name": true_name, "cre_id": cre_id}
+
+result = client03.service.verifyUserAuth(t1)
+print(result)
+
 

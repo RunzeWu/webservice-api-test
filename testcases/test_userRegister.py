@@ -38,15 +38,6 @@ class TestUserRegister(unittest.TestCase):
     def tearDownClass(cls):
         cls.mysql.close_database()
 
-    def setUp(self):
-        # fake = faker.Faker("zh_CN")
-        pass
-        # print(self.user_id)
-
-
-    def tearDown(self):
-        pass
-
     @data(*testcases)
     def test_userRegister(self, value):
         # print(value["data"], type(value["data"]))
