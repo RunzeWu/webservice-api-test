@@ -9,6 +9,7 @@ from suds.client import Client
 from common.mysql import MysqlUtil
 from faker import Faker
 
+# 需要faker模块，请pip install faker
 
 def getMcode(mobile):
     if type(mobile) == str and len(mobile) == 11:
@@ -36,6 +37,7 @@ fake = Faker("zh_CN")
 mobile = fake.phone_number()
 print(mobile)
 
+# 发验证码
 sendMCode_url = "http://120.24.235.105:9010/sms-service-war-1.0/ws/smsFacade.ws?wsdl"
 client01 = Client(sendMCode_url)
 t = {'mobile': mobile, 'tmpl_id': 1, 'client_ip': '47.107.168.87'}
@@ -44,6 +46,7 @@ client01.service.sendMCode(t)
 code = getMcode(mobile)
 print(mobile, code)
 
+# 注册
 user_id = fake.name()
 
 userRegister_url = "http://120.24.235.105:9010/finance-user_info-war-1.0/ws/financeUserInfoFacade.ws?wsdl"
@@ -54,6 +57,7 @@ t = {"channel_id": "1", "ip": "129.45.6.7", "mobile": mobile, "pwd": "453173", "
 result = client02.service.userRegister(t)
 print(result)
 
+# 实名认证
 true_name = user_id
 cre_id = fake.ssn()
 uid = getuid(user_id)
@@ -66,4 +70,14 @@ t1 = {"uid": uid, "true_name": true_name, "cre_id": cre_id}
 result = client03.service.verifyUserAuth(t1)
 print(result)
 
+# 绑定银行卡
+cardid = str(fake.credit_card_number(card_type=None))
+bankname = "招商银行"
 
+
+t2 = {"uid":uid,"pay_pwd":"453173","mobile":mobile,"cre_id":cre_id,
+      "user_name":true_name,"cardid":"6212264301007974189","bank_type":1001,"bank_name":bankname}
+print(t2)
+
+res = client03.service.bindBankCard(t2)
+print(res)
