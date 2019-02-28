@@ -6,7 +6,6 @@
 # @File     : test_verifiedUserAuth.py
 # @Software : PyCharm
 import unittest
-import re
 from suds.client import Client
 from libext.ddt import ddt, data
 from common import mylog
@@ -19,9 +18,6 @@ from common.mysql import MysqlUtil
 from common.config import ReadConfig
 
 logger = mylog.get_logger(logger_name="test_verifyUserAuth")
-
-
-# print(testcases)
 
 
 @ddt
@@ -50,9 +46,18 @@ class TestUserRegister(unittest.TestCase):
         A.close_database()
         return res
 
+    def get_max_Fpk_id(self):
+        sql = "select MAX(Fpk_id) AS max_id FROM user_db.t_user_auth_info"
+        A = MysqlUtil()
+        res = A.fetchone(sql)
+        A.close_database()
+        return res
+
+    def setUp(self):
+        self.before_max_fpk_id = self.get_max_Fpk_id()
+
     @data(*testcases)
     def test_userRegister(self, value):
-        print(type(context.replace_new(self.userRegister_data)))
         userRegister_param = eval(context.replace_new(self.userRegister_data))
         register_mobile = userRegister_param["mobile"]
 
@@ -61,35 +66,65 @@ class TestUserRegister(unittest.TestCase):
 
         MCode().sendMCode(self.MCodeParam)
 
-
         # 注册数据准备
 
         user_id = userRegister_param["user_id"]
         userRegister_param["verify_code"] = MCode().getMcode(register_mobile)
 
-        url = ReadConfig().get_value("env-api", "pre_url")+value["url"]
+        url = ReadConfig().get_value("env-api", "pre_url") + value["url"]
         client = Client(url)
-        res = client.service.userRegister(userRegister_param)
-        print(userRegister_param, res)
+        client.service.userRegister(userRegister_param)
 
         # 以上代码能跑通
 
-        uid = self.getuid(user_id)
-
         id = value["id"]
         title = value["title"]
-        verifyUserAuth_param = eval(context.replace_new(value["data"]))
-        verifyUserAuth_param["uid"] = uid
+
+        verifyuserauth_param = eval(context.replace_new(value["data"]))
+
+        if title != "不注册直接认证(uid不存在)" and title != "uid为空":
+            verifyuserauth_param["uid"] = self.getuid(user_id)
+
         true_name = getattr(Context, "true_name")
-        verifyUserAuth_param["true_name"] = true_name
 
-        expect = value["expect"]
+        if title != "用户姓名为空":
+            verifyuserauth_param["true_name"] = true_name
 
-        print(verifyUserAuth_param)
+        expect = str(value["expect"])
 
-        res = client.service.verifyUserAuth(verifyUserAuth_param)
-        print(res)
+        logger.info(verifyuserauth_param)
 
-        # 注册
+        res = client.service.verifyUserAuth(verifyuserauth_param)
+        logger.info(res)
+        res.retCode = str(res.retCode)
 
-        # 实名验证
+        after_max_fpk_id = self.get_max_Fpk_id()
+
+        try:
+            self.assertEqual(expect, res.retCode)
+            logger.info("判断校验码成功")
+            if res.retCode == "0":
+                try:
+                    self.assertEqual(self.before_max_fpk_id, after_max_fpk_id - 1)
+                    logger.info("验库成功")
+                except AssertionError as e:
+                    logger.error("验库失败")
+                    self.excel.write_data(id + 1, 7, res.retCode)
+                    self.excel.write_data(id + 1, 8, "Failed")
+                    raise e
+            else:
+                try:
+                    self.assertEqual(self.before_max_fpk_id, after_max_fpk_id)
+                    logger.info("验库成功")
+                except AssertionError as e:
+                    self.excel.write_data(id + 1, 7, res.retCode)
+                    self.excel.write_data(id + 1, 8, "Failed")
+                    logger.error("验库失败")
+                    raise e
+            self.excel.write_data(id + 1, 7, res.retCode)
+            self.excel.write_data(id + 1, 8, "Pass")
+        except AssertionError as e:
+            logger.error("校验码失败")
+            self.excel.write_data(id + 1, 7, res.retCode)
+            self.excel.write_data(id + 1, 8, "Failed")
+            raise e

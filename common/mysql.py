@@ -47,8 +47,10 @@ class MysqlUtil:
 
 if __name__ == '__main__':
     A = MysqlUtil()
-    sql = "select * FROM user_db.t_user_info WHERE Fuser_id = '1465145'"
+    sql = "select MAX(Fpk_id) AS max_id FROM user_db.t_user_auth_info"
     try:
         res = A.fetchone(sql)
+        print(type(res))
     except Exception as e:
         res = None
+    print(res)

@@ -31,7 +31,7 @@ class MCode:
             str2 = mobile[-3]
             sql = "select Fverify_code from sms_db_" + str1 + ".t_mvcode_info_" + str2 + \
                   " where Fmobile_no=" + mobile + " GROUP BY Fsend_time DESC"
-            print(sql)
+            # print(sql)
 
             A = MysqlUtil()
             res = A.fetchone(sql)
