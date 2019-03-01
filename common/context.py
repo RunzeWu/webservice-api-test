@@ -17,6 +17,7 @@ class Context:  # 上下文，数据的准备和记录
     user_id = true_name + str(random.randint(0, 10)) + " By夜雨声烦"
 
 
+
 # s 是目标字符串
 # d 是替换的内容
 # 找到目标字符串里面的标识符KEY，去d里面拿到替换的值
@@ -63,10 +64,6 @@ if __name__ == '__main__':
     s2 = '{"channel_id": "1", "ip": "129.45.6.7", "mobile": "${mobile}",' \
          ' "pwd": "453173", "user_id": "${user_id}", "verify_code": "${verify_code}"}'
 
-    # data = {"admin_user": "15873171553", "admin_pwd": "123456"}
-    #
-    # s = replace(s, data)
-    # print(s)
     for i in range(6):
         s = replace_new(s2)
         print(s)
