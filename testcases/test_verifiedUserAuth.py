@@ -16,6 +16,7 @@ from common import context
 from common.context import Context
 from common.mysql import MysqlUtil
 from common.config import ReadConfig
+from common import db_select
 
 logger = mylog.get_logger(logger_name="test_verifyUserAuth")
 
@@ -39,22 +40,9 @@ class TestUserRegister(unittest.TestCase):
     def tearDownClass(cls):
         cls.mysql.close_database()
 
-    def getuid(self, user_id):
-        sql = "select Fuid FROM user_db.t_user_info where Fuser_id = '" + user_id + "'"
-        A = MysqlUtil()
-        res = str(A.fetchone(sql))
-        A.close_database()
-        return res
-
-    def get_max_Fpk_id(self):
-        sql = "select MAX(Fpk_id) AS max_id FROM user_db.t_user_auth_info"
-        A = MysqlUtil()
-        res = A.fetchone(sql)
-        A.close_database()
-        return res
 
     def setUp(self):
-        self.before_max_fpk_id = self.get_max_Fpk_id()
+        self.before_max_fpk_id = db_select.get_max_Fpk_id()
 
     @data(*testcases)
     def test_userRegister(self, value):
@@ -83,7 +71,7 @@ class TestUserRegister(unittest.TestCase):
         verifyuserauth_param = eval(context.replace_new(value["data"]))
 
         if title != "不注册直接认证(uid不存在)" and title != "uid为空":
-            verifyuserauth_param["uid"] = self.getuid(user_id)
+            verifyuserauth_param["uid"] = db_select.getuid(user_id)
 
         true_name = getattr(Context, "true_name")
 
@@ -98,7 +86,7 @@ class TestUserRegister(unittest.TestCase):
         logger.info(res)
         res.retCode = str(res.retCode)
 
-        after_max_fpk_id = self.get_max_Fpk_id()
+        after_max_fpk_id = db_select.get_max_Fpk_id()
 
         try:
             self.assertEqual(expect, res.retCode)

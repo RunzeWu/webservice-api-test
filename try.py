@@ -9,6 +9,7 @@ from suds.client import Client
 from common.mysql import MysqlUtil
 from faker import Faker
 
+
 # 需要faker模块，请pip install faker
 
 def getMcode(mobile):
@@ -26,12 +27,14 @@ def getMcode(mobile):
         res = None
     return res
 
+
 def getuid(user_id):
-    sql = "select Fuid FROM user_db.t_user_info where Fuser_id = '" + user_id +"'"
+    sql = "select Fuid FROM user_db.t_user_info where Fuser_id = '" + user_id + "'"
     A = MysqlUtil()
     res = str(A.fetchone(sql))
     A.close_database()
     return res
+
 
 fake = Faker("zh_CN")
 mobile = fake.phone_number()
@@ -74,9 +77,8 @@ print(result)
 cardid = str(fake.credit_card_number(card_type=None))
 bankname = "招商银行"
 
-
-t2 = {"uid":uid,"pay_pwd":"453173","mobile":mobile,"cre_id":cre_id,
-      "user_name":true_name,"cardid":"6212264301007974189","bank_type":1001,"bank_name":bankname}
+t2 = {"uid": uid, "bank_name": None, "pay_pwd": "453173", "mobile": mobile, "cre_id": cre_id,
+      "user_name": true_name, "cardid": "6212264301007974189", "bank_type": 1001}
 print(t2)
 
 res = client03.service.bindBankCard(t2)
