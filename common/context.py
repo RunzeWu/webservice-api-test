@@ -13,8 +13,11 @@ class Context:  # 上下文，数据的准备和记录
     verify_code = ""
     uid = ""
     cre_id = fake.ssn()
-    true_name = fake.name()
+    user_name = true_name = fake.name()
     user_id = true_name + str(random.randint(0, 10)) + " By夜雨声烦"
+    cardid = "6212264301007"+ str(random.randint(100000,999999)) # 银行卡格式
+    uid = ""
+
 
 
 
@@ -47,12 +50,14 @@ def replace_new(s):
             name = fake.name()
             if key == "mobile":
                 setattr(Context, key, fake.phone_number())
-            elif key == "true_name":
+            elif key == "true_name" or key == "user_name":
                 setattr(Context, key, name)
             elif key == "user_id":
                 setattr(Context, key, name + str(random.randint(0, 10)) + " By夜雨声烦")
             elif key == "cre_id":
                 setattr(Context, key, fake.ssn())
+            elif key == "cardid":
+                setattr(Context, key,"6212264301007"+ str(random.randint(100000,999999)))
         else:
             return None  # 或者抛出一个异常，告知没有这个属性
     return s
@@ -63,7 +68,8 @@ if __name__ == '__main__':
     s1 = '{"uid":"${uid}","true_name":"${true_name}","user_id":"${user_id}","cre_id":"${cre_id}"}'
     s2 = '{"channel_id": "1", "ip": "129.45.6.7", "mobile": "${mobile}",' \
          ' "pwd": "453173", "user_id": "${user_id}", "verify_code": "${verify_code}"}'
+    s3 = "{'uid': '${uid}', 'user_name': '${user_name}', 'cre_id': '${cre_id}', 'bank_type': 1001, " \
+         "'mobile': '${mobile}', 'cardid': '${cardid}', 'pay_pwd': '453173', 'bank_name': '招商银行'}"
 
-    for i in range(6):
-        s = replace_new(s2)
-        print(s)
+    s = replace_new(s3)
+    print(s)

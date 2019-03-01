@@ -77,8 +77,8 @@ print(result)
 cardid = str(fake.credit_card_number(card_type=None))
 bankname = "招商银行"
 
-t2 = {"uid": uid, "bank_name": None, "pay_pwd": "453173", "mobile": mobile, "cre_id": cre_id,
-      "user_name": true_name, "cardid": "6212264301007974189", "bank_type": 1001}
+t2 = {"uid": uid, "bank_name": "招商银行", "pay_pwd": "453173", "mobile": mobile, "cre_id": cre_id,
+      "user_name": true_name, "cardid": "6212264301007974189x", "bank_type": 1001}
 print(t2)
 
 res = client03.service.bindBankCard(t2)
