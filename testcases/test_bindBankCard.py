@@ -92,10 +92,11 @@ class TestBindBankCard(unittest.TestCase):
         if value["title"] != "手机号码为空" and value["title"] != "手机号码格式不正确":
             data["mobile"] = self.mobile
 
-        print(data)
+        # print(data)
 
         res = self.client.service.bindBankCard(data)
-        print(res)
+        logger.info("请求成功，结果是{}".format(res))
+        # print(res)
         actual = str(res.retCode)
         expect = str(value["expect"])
         id = value["id"]

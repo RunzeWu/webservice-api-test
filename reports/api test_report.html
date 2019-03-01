@@ -116,19 +116,19 @@ function html_escape(s) {
 <div class='heading'>
 <h1 style="font-family: Microsoft YaHei">webservice接口测试报告</h1>
 <p class='attribute'><strong>测试人员 : </strong> 夜雨声烦</p>
-<p class='attribute'><strong>开始时间 : </strong> 2019-02-26 19:39:56</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:35.788828</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 15，通过 13，失败 1，错误 1，通过率= 86.67%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-03-01 23:48:05</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:01:31.862167</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 33，通过 29，失败 4，通过率= 87.88%</p>
 
 <p class='description'>description</p>
 </div>
 
 
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 86.67% }</a>
-<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 1 }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 13 }</a>
-<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 15 }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 87.88% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 4 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 29 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 33 }</a>
 </p>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
 <colgroup>
@@ -149,104 +149,41 @@ function html_escape(s) {
 </tr>
 
 <tr class='failClass warning'>
-    <td>test_sendMCode.TestSendMcode</td>
-    <td class="text-center">7</td>
-    <td class="text-center">6</td>
-    <td class="text-center">1</td>
+    <td>test_bindBankCard.TestBindBankCard</td>
+    <td class="text-center">12</td>
+    <td class="text-center">10</td>
+    <td class="text-center">2</td>
     <td class="text-center">0</td>
-    <td class="text-center"><a href="javascript:showClassDetail('c1',7)" class="detail" id='c1'>详细</a></td>
+    <td class="text-center"><a href="javascript:showClassDetail('c1',12)" class="detail" id='c1'>详细</a></td>
 </tr>
 
-<tr id='pt1_1' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_1_正常发送验证码: dict() -> new empty dictionary</div></td>
+<tr id='ft1_1' class='none'>
+    <td class='failCase'><div class='testcase'>test_bindBankCard_01_正常绑定银行卡: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
-    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
-    <div id='div_pt1_1' class="collapse">  -->
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
+    <div id='div_ft1_1' class="collapse">  -->
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
-    <div id='div_pt1_1' class="collapse in" align="left">
+    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>失败</button>
+    <div id='div_ft1_1' class="collapse in" align="left">
     <pre>
     
-pt1_1: mobile
---- Logging error ---
+ft1_1: {'uid': '100005883', 'user_name': '宁旭', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '420922196304064963', 'mobile': '14551308321', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "20042018"
+   retInfo = "用户交易密码不正确或未配置"
+ }
 Traceback (most recent call last):
-  File "C:\Python34\lib\logging\handlers.py", line 71, in emit
-    if self.shouldRollover(record):
-  File "C:\Python34\lib\logging\handlers.py", line 187, in shouldRollover
-    msg = "%s\n" % self.format(record)
-  File "C:\Python34\lib\logging\__init__.py", line 828, in format
-    return fmt.format(record)
-  File "C:\Python34\lib\logging\__init__.py", line 565, in format
-    record.message = record.getMessage()
-  File "C:\Python34\lib\logging\__init__.py", line 328, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "D:/PYworkspace/webservice-api-test/run.py", line 18, in &lt;module&gt;
-    runner.run(discover)
-  File "D:\PYworkspace\webservice-api-test\libext\HTMLTestRunnerNew.py", line 541, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\case.py", line 628, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\case.py", line 580, in run
-    testMethod()
   File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
     return func(self, *args, **kwargs)
-  File "D:\PYworkspace\webservice-api-test\testcases\test_sendMCode.py", line 69, in test_sendMCode
-    logger.info(type(expect),type(retCode))
-Message: &lt;class 'int'&gt;
-Arguments: (&lt;class 'suds.sax.text.Text'&gt;,)
---- Logging error ---
-Traceback (most recent call last):
-  File "C:\Python34\lib\logging\__init__.py", line 978, in emit
-    msg = self.format(record)
-  File "C:\Python34\lib\logging\__init__.py", line 828, in format
-    return fmt.format(record)
-  File "C:\Python34\lib\logging\__init__.py", line 565, in format
-    record.message = record.getMessage()
-  File "C:\Python34\lib\logging\__init__.py", line 328, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "D:/PYworkspace/webservice-api-test/run.py", line 18, in &lt;module&gt;
-    runner.run(discover)
-  File "D:\PYworkspace\webservice-api-test\libext\HTMLTestRunnerNew.py", line 541, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\suite.py", line 84, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\suite.py", line 122, in run
-    test(result)
-  File "C:\Python34\lib\unittest\case.py", line 628, in __call__
-    return self.run(*args, **kwds)
-  File "C:\Python34\lib\unittest\case.py", line 580, in run
-    testMethod()
-  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
-    return func(self, *args, **kwargs)
-  File "D:\PYworkspace\webservice-api-test\testcases\test_sendMCode.py", line 69, in test_sendMCode
-    logger.info(type(expect),type(retCode))
-Message: &lt;class 'int'&gt;
-Arguments: (&lt;class 'suds.sax.text.Text'&gt;,)
+  File "D:\PYworkspace\webservice-api-test\testcases\test_bindBankCard.py", line 117, in test_bindBankCard
+    raise e
+  File "D:\PYworkspace\webservice-api-test\testcases\test_bindBankCard.py", line 109, in test_bindBankCard
+    self.assertEqual(expect, actual)
+AssertionError: '0' != '20042018'
+- 0
++ 20042018
+
 
 
     </pre>
@@ -255,7 +192,7 @@ Arguments: (&lt;class 'suds.sax.text.Text'&gt;,)
 </tr>
 
 <tr id='pt1_2' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_2_号码为空: dict() -> new empty dictionary</div></td>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_02_支付密码为空: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
     <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
@@ -265,10 +202,10 @@ Arguments: (&lt;class 'suds.sax.text.Text'&gt;,)
     <div id='div_pt1_2' class="collapse in" align="left">
     <pre>
     
-pt1_2: &lt;suds.sax.document.Document object at 0x0000000016674898&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "手机号码错误"
+pt1_2: {'uid': '100005884', 'user_name': '王英', 'bank_type': 1001, 'pay_pwd': '', 'cre_id': '410523193206108175', 'mobile': '15232443856', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "支付密码错误"
  }
 
 
@@ -278,7 +215,7 @@ pt1_2: &lt;suds.sax.document.Document object at 0x0000000016674898&gt;
 </tr>
 
 <tr id='pt1_3' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_3_号码长度少于11位: dict() -> new empty dictionary</div></td>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_03_手机号码为空: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
     <button id='btn_pt1_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_3'>通过</button>
@@ -288,10 +225,10 @@ pt1_2: &lt;suds.sax.document.Document object at 0x0000000016674898&gt;
     <div id='div_pt1_3' class="collapse in" align="left">
     <pre>
     
-pt1_3: &lt;suds.sax.document.Document object at 0x00000000166D83C8&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "手机号码错误"
+pt1_3: {'uid': '100005885', 'user_name': '张洁', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '150802199208313568', 'mobile': '', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "绑定的银行卡手机号错误"
  }
 
 
@@ -301,7 +238,7 @@ pt1_3: &lt;suds.sax.document.Document object at 0x00000000166D83C8&gt;
 </tr>
 
 <tr id='pt1_4' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_4_号码长度多于11位: dict() -> new empty dictionary</div></td>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_04_手机号码格式不正确: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
     <button id='btn_pt1_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_4'>通过</button>
@@ -311,10 +248,10 @@ pt1_3: &lt;suds.sax.document.Document object at 0x00000000166D83C8&gt;
     <div id='div_pt1_4' class="collapse in" align="left">
     <pre>
     
-pt1_4: &lt;suds.sax.document.Document object at 0x00000000166CD9E8&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "手机号码错误"
+pt1_4: {'uid': '100005886', 'user_name': '黄静', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '820000194701012153', 'mobile': '177518107785', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "绑定的银行卡手机号错误"
  }
 
 
@@ -323,55 +260,22 @@ pt1_4: &lt;suds.sax.document.Document object at 0x00000000166CD9E8&gt;
     </td>
 </tr>
 
-<tr id='ft1_5' class='none'>
-    <td class='failCase'><div class='testcase'>test_sendMCode_5_ip地址不合法: dict() -> new empty dictionary</div></td>
+<tr id='pt1_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_05_证件id为空: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
-    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_5'>失败</button>
-    <div id='div_ft1_5' class="collapse">  -->
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse">  -->
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_5'>失败</button>
-    <div id='div_ft1_5' class="collapse in" align="left">
+    <button id='btn_pt1_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_5'>通过</button>
+    <div id='div_pt1_5' class="collapse in" align="left">
     <pre>
     
-ft1_5: &lt;suds.sax.document.Document object at 0x00000000166F24E0&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "手机号超过频率限制"
+pt1_5: {'uid': '100005887', 'user_name': '王桂珍', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': None, 'mobile': '15660967905', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "证件号错误"
  }
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\suds\transport\http.py", line 82, in send
-    fp = self.u2open(u2request)
-  File "C:\Python34\lib\site-packages\suds\transport\http.py", line 132, in u2open
-    return url.open(u2request, timeout=tm)
-urllib.error.HTTPError: HTTP Error 500: Internal Server Error
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\suds\client.py", line 613, in send
-    reply = self.options.transport.send(request)
-  File "C:\Python34\lib\site-packages\suds\transport\https.py", line 66, in send
-    return HttpTransport.send(self, request)
-suds.transport.TransportError: Internal Server Error
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "D:\PYworkspace\webservice-api-test\testcases\test_sendMCode.py", line 53, in test_sendMCode
-    res = MCode().sendMCode(param)
-  File "D:\PYworkspace\webservice-api-test\common\mcode.py", line 24, in sendMCode
-    result = self.client.service.sendMCode(params)
-suds.WebFault: Server raised fault: '手机号超过频率限制'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
-    return func(self, *args, **kwargs)
-  File "D:\PYworkspace\webservice-api-test\testcases\test_sendMCode.py", line 62, in test_sendMCode
-    self.assertEqual(faultstring, expect,"系统报错信息不一致")
-AssertionError: '手机号超过频率限制' != 0 : 系统报错信息不一致
 
 
     </pre>
@@ -380,7 +284,7 @@ AssertionError: '手机号超过频率限制' != 0 : 系统报错信息不一致
 </tr>
 
 <tr id='pt1_6' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_6_tmpl_id为空: dict() -> new empty dictionary</div></td>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_06_uid为空: dict() -> new empty dictionary</div></td>
     <td colspan='5' align='center'>
     <!--默认收起错误信息 -Findyou
     <button id='btn_pt1_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_6'>通过</button>
@@ -390,281 +294,7 @@ AssertionError: '手机号超过频率限制' != 0 : 系统报错信息不一致
     <div id='div_pt1_6' class="collapse in" align="left">
     <pre>
     
-pt1_6: mobile
-&lt;suds.sax.document.Document object at 0x0000000016704080&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "短信模板ID错误"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt1_7' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_sendMCode_7_ip地址为空: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
-    <div id='div_pt1_7' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
-    <div id='div_pt1_7' class="collapse in" align="left">
-    <pre>
-    
-pt1_7: mobile
-&lt;suds.sax.document.Document object at 0x00000000165AF6D8&gt;
-(Fault){
-   faultcode = "soap:Server"
-   faultstring = "用户IP不能为空"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr class='errorClass warning'>
-    <td>test_userRegister.TestUserRegister</td>
-    <td class="text-center">8</td>
-    <td class="text-center">7</td>
-    <td class="text-center">0</td>
-    <td class="text-center">1</td>
-    <td class="text-center"><a href="javascript:showClassDetail('c2',8)" class="detail" id='c2'>详细</a></td>
-</tr>
-
-<tr id='pt2_1' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_1_正常注册: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
-    <div id='div_pt2_1' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
-    <div id='div_pt2_1' class="collapse in" align="left">
-    <pre>
-    
-pt2_1: 13360615575
-select Fverify_code from sms_db_75.t_mvcode_info_5 where Fmobile_no=13360615575 GROUP BY Fsend_time DESC
-13360615575
-381386
-(commResult){
-   retCode = "0"
-   retInfo = "ok"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_2' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_2_号码为空: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
-    <div id='div_pt2_2' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
-    <div id='div_pt2_2' class="collapse in" align="left">
-    <pre>
-    
-pt2_2: (commResult){
-   retCode = "19001"
-   retInfo = "手机号错误"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_3' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_3_号码格式不正确: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
-    <div id='div_pt2_3' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
-    <div id='div_pt2_3' class="collapse in" align="left">
-    <pre>
-    
-pt2_3: (commResult){
-   retCode = "19001"
-   retInfo = "手机号错误"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='ft2_4' class='none'>
-    <td class='errorCase'><div class='testcase'>test_userRegister_4_号码已注册: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft2_4'>错误</button>
-    <div id='div_ft2_4' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft2_4'>错误</button>
-    <div id='div_ft2_4' class="collapse in" align="left">
-    <pre>
-    
-ft2_4: 17751810779
-&lt;suds.sax.document.Document object at 0x00000000168EDCF8&gt;
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\suds\transport\http.py", line 82, in send
-    fp = self.u2open(u2request)
-  File "C:\Python34\lib\site-packages\suds\transport\http.py", line 132, in u2open
-    return url.open(u2request, timeout=tm)
-  File "C:\Python34\lib\urllib\request.py", line 470, in open
-    response = meth(req, response)
-  File "C:\Python34\lib\urllib\request.py", line 580, in http_response
-    'http', request, response, code, msg, hdrs)
-  File "C:\Python34\lib\urllib\request.py", line 508, in error
-    return self._call_chain(*args)
-  File "C:\Python34\lib\urllib\request.py", line 442, in _call_chain
-    result = func(*args)
-  File "C:\Python34\lib\urllib\request.py", line 588, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 500: Internal Server Error
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\Python34\lib\site-packages\suds\client.py", line 613, in send
-    reply = self.options.transport.send(request)
-  File "C:\Python34\lib\site-packages\suds\transport\https.py", line 66, in send
-    return HttpTransport.send(self, request)
-  File "C:\Python34\lib\site-packages\suds\transport\http.py", line 94, in send
-    raise TransportError(e.msg, e.code, e.fp)
-suds.transport.TransportError: Internal Server Error
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
-    return func(self, *args, **kwargs)
-  File "D:\PYworkspace\webservice-api-test\testcases\test_userRegister.py", line 63, in test_userRegister
-    MCode().sendMCode(self.MCodeParam)
-  File "D:\PYworkspace\webservice-api-test\common\mcode.py", line 24, in sendMCode
-    result = self.client.service.sendMCode(params)
-  File "C:\Python34\lib\site-packages\suds\client.py", line 521, in __call__
-    return client.invoke(args, kwargs)
-  File "C:\Python34\lib\site-packages\suds\client.py", line 581, in invoke
-    result = self.send(soapenv)
-  File "C:\Python34\lib\site-packages\suds\client.py", line 619, in send
-    description=tostr(e), original_soapenv=original_soapenv)
-  File "C:\Python34\lib\site-packages\suds\client.py", line 670, in process_reply
-    raise WebFault(fault, replyroot)
-suds.WebFault: Server raised fault: '手机号超过频率限制'
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_5' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_5_验证码不正确: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_5'>通过</button>
-    <div id='div_pt2_5' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_5' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_5'>通过</button>
-    <div id='div_pt2_5' class="collapse in" align="left">
-    <pre>
-    
-pt2_5: 13656151793
-select Fverify_code from sms_db_93.t_mvcode_info_7 where Fmobile_no=13656151793 GROUP BY Fsend_time DESC
-13656151793
-4
-(commResult){
-   retCode = "30010008"
-   retInfo = "验证码错误"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_6' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_6_验证码为空: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
-    <div id='div_pt2_6' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
-    <div id='div_pt2_6' class="collapse in" align="left">
-    <pre>
-    
-pt2_6: 13296496823
-select Fverify_code from sms_db_23.t_mvcode_info_8 where Fmobile_no=13296496823 GROUP BY Fsend_time DESC
-13296496823
-
-(commResult){
-   retCode = "19001"
-   retInfo = "验证码错误"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_7' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_7_验证码超时: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_7'>通过</button>
-    <div id='div_pt2_7' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_7'>通过</button>
-    <div id='div_pt2_7' class="collapse in" align="left">
-    <pre>
-    
-pt2_7: 18573034187
-select Fverify_code from sms_db_87.t_mvcode_info_1 where Fmobile_no=18573034187 GROUP BY Fsend_time DESC
-18573034187
-893822
-(commResult){
-   retCode = "0"
-   retInfo = "ok"
- }
-
-
-    </pre>
-    </div>
-    </td>
-</tr>
-
-<tr id='pt2_8' class='hiddenRow'>
-    <td class='passCase'><div class='testcase'>test_userRegister_8_密码为空: dict() -> new empty dictionary</div></td>
-    <td colspan='5' align='center'>
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_pt2_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_8'>通过</button>
-    <div id='div_pt2_8' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_pt2_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_8'>通过</button>
-    <div id='div_pt2_8' class="collapse in" align="left">
-    <pre>
-    
-pt2_8: 18616411393
-select Fverify_code from sms_db_93.t_mvcode_info_3 where Fmobile_no=18616411393 GROUP BY Fsend_time DESC
-18616411393
-870449
+pt1_6: {'uid': None, 'user_name': '陈冬梅', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '220382193909256098', 'mobile': '13065630247', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
 (commResult){
    retCode = "19001"
    retInfo = "用户UID错误"
@@ -676,13 +306,518 @@ select Fverify_code from sms_db_93.t_mvcode_info_3 where Fmobile_no=18616411393 
     </td>
 </tr>
 
+<tr id='pt1_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_07_uid不存在: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_7'>通过</button>
+    <div id='div_pt1_7' class="collapse in" align="left">
+    <pre>
+    
+pt1_7: {'uid': '99999999', 'user_name': '郭淑珍', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '620921196907244163', 'mobile': '14703603158', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "20042002"
+   retInfo = "用户不存在"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_08_持卡人姓名为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_8'>通过</button>
+    <div id='div_pt1_8' class="collapse in" align="left">
+    <pre>
+    
+pt1_8: {'uid': '100005890', 'user_name': None, 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '513432199402240696', 'mobile': '13940361142', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "持卡人姓名错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_09_银行卡卡号格式不正确: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_9' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_9'>通过</button>
+    <div id='div_pt1_9' class="collapse in" align="left">
+    <pre>
+    
+pt1_9: {'uid': '100005891', 'user_name': '傅超', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '510000199112285532', 'mobile': '13016951512', 'cardid': 'xxxxxxxx', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "卡号错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_10_银行卡卡号为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_10' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_10'>通过</button>
+    <div id='div_pt1_10' class="collapse in" align="left">
+    <pre>
+    
+pt1_10: {'uid': '100005892', 'user_name': '马桂花', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '350124194711109251', 'mobile': '15570368635', 'cardid': '', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "卡号错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt1_11' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_bindBankCard_11_银行类型为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt1_11' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_11'>通过</button>
+    <div id='div_pt1_11' class="collapse in" align="left">
+    <pre>
+    
+pt1_11: {'uid': '100005893', 'user_name': '黄桂英', 'bank_type': None, 'pay_pwd': '453173', 'cre_id': '141124199804103822', 'mobile': '13624188431', 'cardid': '6212264301007974189', 'bank_name': '招商银行'}
+(commResult){
+   retCode = "19001"
+   retInfo = "银行类型错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft1_12' class='none'>
+    <td class='failCase'><div class='testcase'>test_bindBankCard_12_银行名称为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft1_12' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_12'>失败</button>
+    <div id='div_ft1_12' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft1_12' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_12'>失败</button>
+    <div id='div_ft1_12' class="collapse in" align="left">
+    <pre>
+    
+ft1_12: {'uid': '100005894', 'user_name': '袁丽丽', 'bank_type': 1001, 'pay_pwd': '453173', 'cre_id': '522326195007121128', 'mobile': '13556658422', 'cardid': '6212264301007974189', 'bank_name': ''}
+(commResult){
+   retCode = "20042018"
+   retInfo = "用户交易密码不正确或未配置"
+ }
+Traceback (most recent call last):
+  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PYworkspace\webservice-api-test\testcases\test_bindBankCard.py", line 117, in test_bindBankCard
+    raise e
+  File "D:\PYworkspace\webservice-api-test\testcases\test_bindBankCard.py", line 109, in test_bindBankCard
+    self.assertEqual(expect, actual)
+AssertionError: '19001' != '20042018'
+- 19001
++ 20042018
+
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_sendMCode.TestSendMcode</td>
+    <td class="text-center">7</td>
+    <td class="text-center">7</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c2',7)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_1_正常发送验证码: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+    <div id='div_pt2_1' class="collapse in" align="left">
+    <pre>
+    
+pt2_1: mobile
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_2_号码为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
+    <div id='div_pt2_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_2'>通过</button>
+    <div id='div_pt2_2' class="collapse in" align="left">
+    <pre>
+    
+pt2_2: &lt;suds.sax.document.Document object at 0x000000001856AE80&gt;
+(Fault){
+   faultcode = "soap:Server"
+   faultstring = "手机号码错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_3_号码长度少于11位: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
+    <div id='div_pt2_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_3'>通过</button>
+    <div id='div_pt2_3' class="collapse in" align="left">
+    <pre>
+    
+pt2_3: &lt;suds.sax.document.Document object at 0x000000001849F048&gt;
+(Fault){
+   faultcode = "soap:Server"
+   faultstring = "手机号码错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_4_号码长度多于11位: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_4'>通过</button>
+    <div id='div_pt2_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_4'>通过</button>
+    <div id='div_pt2_4' class="collapse in" align="left">
+    <pre>
+    
+pt2_4: &lt;suds.sax.document.Document object at 0x00000000183D6438&gt;
+(Fault){
+   faultcode = "soap:Server"
+   faultstring = "手机号码错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_5_ip地址不合法: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt2_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_6_tmpl_id为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
+    <div id='div_pt2_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_6'>通过</button>
+    <div id='div_pt2_6' class="collapse in" align="left">
+    <pre>
+    
+pt2_6: mobile
+&lt;suds.sax.document.Document object at 0x00000000181F0780&gt;
+(Fault){
+   faultcode = "soap:Server"
+   faultstring = "短信模板ID错误"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt2_7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_sendMCode_7_ip地址为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_7'>通过</button>
+    <div id='div_pt2_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt2_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_7'>通过</button>
+    <div id='div_pt2_7' class="collapse in" align="left">
+    <pre>
+    
+pt2_7: mobile
+&lt;suds.sax.document.Document object at 0x0000000018089518&gt;
+(Fault){
+   faultcode = "soap:Server"
+   faultstring = "用户IP不能为空"
+ }
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='failClass warning'>
+    <td>test_userRegister.TestUserRegister</td>
+    <td class="text-center">8</td>
+    <td class="text-center">6</td>
+    <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c3',8)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_1_正常注册: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+    <div id='div_pt3_1' class="collapse in" align="left">
+    <pre>
+    
+pt3_1: 18781239563
+372370
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_2_号码为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_2'>通过</button>
+    <div id='div_pt3_2' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_2'>通过</button>
+    <div id='div_pt3_2' class="collapse in" align="left">
+    <pre>
+    
+pt3_2: 
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_3_号码格式不正确: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_3' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_3'>通过</button>
+    <div id='div_pt3_3' class="collapse in" align="left">
+    <pre>
+    
+pt3_3: 
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_4' class='none'>
+    <td class='failCase'><div class='testcase'>test_userRegister_4_号码已注册: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_4' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_4'>失败</button>
+    <div id='div_ft3_4' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_4' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_4'>失败</button>
+    <div id='div_ft3_4' class="collapse in" align="left">
+    <pre>
+    
+ft3_4: 17751810779
+641219
+Traceback (most recent call last):
+  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PYworkspace\webservice-api-test\testcases\test_userRegister.py", line 107, in test_userRegister
+    raise e
+  File "D:\PYworkspace\webservice-api-test\testcases\test_userRegister.py", line 78, in test_userRegister
+    self.assertEqual(int(res.retCode), value["expect"])
+AssertionError: 0 != 20042023
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_5_验证码不正确: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt3_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_6_验证码为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_6' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_6'>通过</button>
+    <div id='div_pt3_6' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_6' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_6'>通过</button>
+    <div id='div_pt3_6' class="collapse in" align="left">
+    <pre>
+    
+pt3_6: 
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='ft3_7' class='none'>
+    <td class='failCase'><div class='testcase'>test_userRegister_7_验证码超时: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft3_7'>失败</button>
+    <div id='div_ft3_7' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_ft3_7' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft3_7'>失败</button>
+    <div id='div_ft3_7' class="collapse in" align="left">
+    <pre>
+    
+ft3_7: 15644608521
+347182
+Traceback (most recent call last):
+  File "D:\PYworkspace\webservice-api-test\libext\ddt.py", line 154, in wrapper
+    return func(self, *args, **kwargs)
+  File "D:\PYworkspace\webservice-api-test\testcases\test_userRegister.py", line 107, in test_userRegister
+    raise e
+  File "D:\PYworkspace\webservice-api-test\testcases\test_userRegister.py", line 78, in test_userRegister
+    self.assertEqual(int(res.retCode), value["expect"])
+AssertionError: 0 != 30010010
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr id='pt3_8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_8_密码为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'>
+    <!--默认收起错误信息 -Findyou
+    <button id='btn_pt3_8' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_8'>通过</button>
+    <div id='div_pt3_8' class="collapse">  -->
+    <!-- 默认展开错误信息 -Findyou -->
+    <button id='btn_pt3_8' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_8'>通过</button>
+    <div id='div_pt3_8' class="collapse in" align="left">
+    <pre>
+    
+pt3_8: 18216301706
+638376
+
+
+    </pre>
+    </div>
+    </td>
+</tr>
+
+<tr class='passClass warning'>
+    <td>test_verifiedUserAuth.TestUserRegister</td>
+    <td class="text-center">6</td>
+    <td class="text-center">6</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
+    <td class="text-center"><a href="javascript:showClassDetail('c4',6)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_1_正常实名认证: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_2_用户姓名为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_3_用户身份证号为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_4_用户身份证格式不正确: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_5_不注册直接认证_uid不存在_: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
+<tr id='pt4_6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_userRegister_6_uid为空: dict() -> new empty dictionary</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
+</tr>
+
 <tr id='total_row' class="text-center active">
     <td>总计</td>
-    <td>15</td>
-    <td>13</td>
-    <td>1</td>
-    <td>1</td>
-    <td>通过率：86.67%</td>
+    <td>33</td>
+    <td>29</td>
+    <td>4</td>
+    <td>0</td>
+    <td>通过率：87.88%</td>
 </tr>
 </table>
 
